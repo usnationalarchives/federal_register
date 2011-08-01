@@ -13,7 +13,7 @@ For more information about the FederalRegister.gov API, see http://www.federalre
       puts "#{article.title} by #{article.agencies.map(&:name)}"
     end
     
-    Agency.all.each do |agency|
+    FederalRegister::Agency.all.each do |agency|
       puts agency.name
     end
 
