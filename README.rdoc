@@ -1,6 +1,21 @@
 = federal_register
 
-Description goes here.
+Ruby API Client for FederalRegister.gov that handles searching articles and getting basic information about agencies.
+
+For more information about the FederalRegister.gov API, see http://www.federalregister.gov/learn/developers
+
+== Usage
+
+    FederalRegister::Article.find('2011-17721').title
+    result_set = FederalRegister::Article.search(:conditions => {:term => "Accessibility"})
+    result_set.count
+    result_set.results.each do |article|
+      puts "#{article.title} by #{article.agencies.map(&:name)}"
+    end
+    
+    Agency.all.each do |agency|
+      puts agency.name
+    end
 
 == Contributing to federal_register
  
@@ -14,6 +29,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Andrew Carpenter. See LICENSE.txt for
+Copyright (c) 2011 Critical Juncture. See LICENSE.txt for
 further details.
 
