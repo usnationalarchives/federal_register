@@ -44,5 +44,12 @@ describe FederalRegister::Agency do
         @agency.send(:attributes)['description'].should == "Lorem ipsum"
       end
     end
+    
+    describe "missing attribute when no full json" do
+      it "should lazy-load from the json_url" do
+        @agency = FederalRegister::Agency.new({'name' => "Commerce Department"})
+        @agency.description.should be_nil
+      end
+    end
   end
 end
