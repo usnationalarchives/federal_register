@@ -53,10 +53,4 @@ class FederalRegister::Article < FederalRegister::Base
   def full_text_xml
     self.class.get(full_text_xml_url).body
   end
-  
-  def fetch_full(id = document_number)
-    @attributes = self.class.get(json_url)
-    @full = true
-    self
-  end
 end

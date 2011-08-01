@@ -27,10 +27,4 @@ class FederalRegister::Agency < FederalRegister::Base
       attributes["logo"]["#{size}_url"] || raise("size '#{size}' not a valid image size")
     end
   end
-  
-  def fetch_full
-    @full = true
-    @attributes = self.class.get(json_url)
-    self
-  end
 end

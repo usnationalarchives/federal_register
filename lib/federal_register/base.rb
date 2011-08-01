@@ -10,7 +10,9 @@ class FederalRegister::Base < FederalRegister::Client
   end
   
   def fetch_full
-    @full = true # noop unless subclassed and made real
+    @attributes = self.class.get(json_url)
+    @full = true
+    self
   end
   
   private
