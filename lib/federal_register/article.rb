@@ -45,12 +45,4 @@ class FederalRegister::Article < FederalRegister::Base
       self.class.get(attributes["#{file_type}_url"]).body
     end
   end
-  
-  def full_text_xml
-    self.class.get(full_text_xml_url).body
-  end
-  
-  def full_text_xml
-    self.class.get(full_text_xml_url).body
-  end
 end
