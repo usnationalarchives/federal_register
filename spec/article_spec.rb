@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 
 describe FederalRegister::Article do
   describe ".find" do
-    it "should fetch the document by its document number" do
+    it "fetches the document by its document number" do
       document_number = "2010-213"
       FakeWeb.register_uri(
         :get,
@@ -10,11 +10,11 @@ describe FederalRegister::Article do
         :content_type =>"text/json",
         :body => {:title => "Important Notice"}.to_json
       )
-      
+
       FederalRegister::Article.find(document_number).title.should == 'Important Notice'
     end
-    
-    it "should throw an error when a document doesn't exist" do
+
+    it "throws an error when a document doesn't exist" do
       document_number = "some-random-document"
       FakeWeb.register_uri(
         :get,
@@ -25,7 +25,7 @@ describe FederalRegister::Article do
       lambda{ FederalRegister::Article.find(document_number) }.should raise_error FederalRegister::Client::RecordNotFound
     end
   end
-  
+
   describe ".search" do
     before(:each) do
       FakeWeb.register_uri(
@@ -35,8 +35,8 @@ describe FederalRegister::Article do
         :body => {:count => 3}.to_json
       )
     end
-    
-    it "should return a resultset object" do
+
+    it "returns a resultset object" do
       FederalRegister::Article.search(:conditions => {:term => "Fish"}).should be_an_instance_of(FederalRegister::ResultSet)
     end
   end
