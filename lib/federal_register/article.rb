@@ -33,6 +33,10 @@ class FederalRegister::Article < FederalRegister::Base
     attributes = get("/articles/#{document_number}.json")
     new(attributes, :full => true)
   end
+
+  def self.find_all(*document_numbers)
+    result_set = FederalRegister::ResultSet.fetch("/articles/#{document_numbers.join(',')}.json", :result_class => self)
+  end
   
   def agencies
     attributes["agencies"].map do |attr|

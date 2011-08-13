@@ -1,5 +1,5 @@
 class FederalRegister::ResultSet < FederalRegister::Client
-  attr_reader :count, :total_pages, :results
+  attr_reader :count, :total_pages, :results, :errors
   
   def initialize(attributes, result_class)
     @result_class = result_class
@@ -9,6 +9,7 @@ class FederalRegister::ResultSet < FederalRegister::Client
     
     @prev_url = attributes['previous_page_url']
     @next_url = attributes['next_page_url']
+    @errors   = attributes['errors']
   end
   
   def next

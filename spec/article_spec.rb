@@ -26,6 +26,19 @@ describe FederalRegister::Article do
     end
   end
 
+  describe ".find_all" do
+    it "fetches multiple matching documents" do
+      FakeWeb.register_uri(
+        :get,
+        "http://www.federalregister.gov/api/v1/articles/abc,def.json", 
+        :content_type =>"text/json",
+        :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
+      )
+      result_set = FederalRegister::Article.find_all('abc','def')
+      result_set.results.map(&:document_number).sort.should === ['abc','def']
+    end
+  end
+
   describe ".search" do
     before(:each) do
       FakeWeb.register_uri(
