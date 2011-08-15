@@ -8,6 +8,7 @@ For more information about the FederalRegister.gov API, see http://www.federalre
 
     FederalRegister::Article.find('2011-17721').title
     result_set = FederalRegister::Article.search(:conditions => {:term => "Accessibility"})
+    # or result_set = FederalRegister.find_all('2011-17721','2011-17722')
     result_set.count
     result_set.results.each do |article|
       puts "#{article.title} by #{article.agencies.map(&:name)}"
