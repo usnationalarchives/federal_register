@@ -1,4 +1,6 @@
 class FederalRegister::ResultSet < FederalRegister::Client
+  include Enumerable
+
   attr_reader :count, :total_pages, :results, :errors
   
   def initialize(attributes, result_class)
@@ -24,5 +26,9 @@ class FederalRegister::ResultSet < FederalRegister::Client
     result_class = options.delete(:result_class)
     response = get(url, options)
     new(response, result_class)
+  end
+
+  def each
+    @results.each {|result| yield result }
   end
 end
