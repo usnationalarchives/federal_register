@@ -21,7 +21,7 @@ class FederalRegister::Article < FederalRegister::Base
     :volume,
     :docket_id,
     :regulation_id_numbers,
-    :cfr_refernces,
+    :cfr_references,
     :json_url
   ]
   
