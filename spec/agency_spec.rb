@@ -52,4 +52,12 @@ describe FederalRegister::Agency do
       end
     end
   end
+
+  describe "quality" do
+    context "ATTRIBUTES" do
+      it "contains no duplicates" do
+        FederalRegister::Agency::ATTRIBUTES.uniq.should == FederalRegister::Agency::ATTRIBUTES
+      end
+    end
+  end
 end
