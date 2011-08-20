@@ -28,7 +28,13 @@ class FederalRegister::Base < FederalRegister::Client
     @full = true
     self
   end
-  
+
+  def self.override_base_uri(uri)
+    [FederalRegister::Agency, FederalRegister::Article, FederalRegister::Base, FederalRegister::Client, FederalRegister:: ResultSet].each do |klass|
+      klass.base_uri(uri)
+    end
+  end
+
   private
   
   attr_reader :attributes

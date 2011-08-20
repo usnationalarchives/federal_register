@@ -22,4 +22,16 @@ describe FederalRegister::Base do
       instance.foo.should == 'bar'
     end
   end
+
+  describe '.override_base_uri' do
+    before(:each) do
+      FederalRegister::Base.override_base_uri('http://fr2.local/api/v1')
+    end
+
+    [FederalRegister::Agency, FederalRegister::Article, FederalRegister::Base, FederalRegister::Client, FederalRegister::ResultSet].each do |klass|
+      it "should set default_options[:base_uri] for #{klass}" do
+        klass.default_options[:base_uri].should == 'http://fr2.local/api/v1'
+      end
+    end
+  end
 end
