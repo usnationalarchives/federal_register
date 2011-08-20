@@ -1,15 +1,12 @@
 class FederalRegister::Agency < FederalRegister::Base
-  ATTRIBUTES = [
-    :id,
-    :name,
-    :short_name,
-    :url,
-    :description,
-    :url,
-    :recent_articles_url,
-    :logo,
-    :json_url
-  ]
+  add_attribute :description,
+                :id,
+                :json_url,
+                :logo,
+                :name,
+                :recent_articles_url,
+                :short_name,
+                :url
   
   def self.all
     response = get('/agencies.json')

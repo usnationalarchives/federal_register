@@ -1,5 +1,19 @@
 class FederalRegister::Base < FederalRegister::Client
   attr_reader :attributes
+
+  def self.add_attribute(*attributes)
+    attributes.each do |attr|
+      define_method attr do
+        val = @attributes[attr.to_s]
+        if ! val && ! full? && respond_to?(:json_url) && @attributes['json_url']
+          fetch_full
+          val = @attributes[attr.to_s]
+        end
+        val
+      end
+    end
+  end
+
   def initialize(attributes = {}, options = {})
     @attributes = attributes
     @full = options[:full] || false
@@ -18,19 +32,4 @@ class FederalRegister::Base < FederalRegister::Client
   private
   
   attr_reader :attributes
-  
-  def method_missing(name, *args)
-    if attributes.has_key?(name.to_s)
-      attributes[name.to_s]
-    elsif self.class::ATTRIBUTES.include?(name.to_sym)
-      if ! full? && @attributes['json_url']
-        fetch_full
-        method_missing(name,*args)
-      else
-        nil
-      end
-    else
-      super
-    end
-  end
 end
