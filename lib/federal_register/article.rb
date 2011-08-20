@@ -44,7 +44,7 @@ class FederalRegister::Article < FederalRegister::Base
   
   %w(full_text_xml abstract_html body_html mods).each do |file_type|
     define_method file_type do
-      self.class.get(attributes["#{file_type}_url"]).body
+      self.class.get(send("#{file_type}_url")).body
     end
   end
 end

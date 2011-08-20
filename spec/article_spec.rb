@@ -53,4 +53,18 @@ describe FederalRegister::Article do
       FederalRegister::Article.search(:conditions => {:term => "Fish"}).should be_an_instance_of(FederalRegister::ResultSet)
     end
   end
+
+  describe "#full_text_xml" do
+    it "fetches the full_text_xml from the full_text_xml_url" do
+      url = "http://example.com/full_text"
+      article = FederalRegister::Article.new("full_text_xml_url" => url)
+      FakeWeb.register_uri(
+        :get,
+        url,
+        :content_type =>"text/xml",
+        :body => "hello, world!"
+      )
+      article.full_text_xml.should == 'hello, world!'
+    end
+  end
 end
