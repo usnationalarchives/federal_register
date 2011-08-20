@@ -67,4 +67,11 @@ describe FederalRegister::Article do
       article.full_text_xml.should == 'hello, world!'
     end
   end
+
+  describe "#publication_date" do
+    it "returns a Date object" do
+      article = FederalRegister::Article.new("publication_date" => "2011-07-22")
+      article.publication_date.should == Date.strptime("2011-07-22") 
+    end
+  end
 end

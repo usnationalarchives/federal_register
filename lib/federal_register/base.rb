@@ -2,12 +2,22 @@ class FederalRegister::Base < FederalRegister::Client
   attr_reader :attributes
 
   def self.add_attribute(*attributes)
+    options = {}
+
+    if attributes.last.is_a?(Hash)
+      options = attributes.pop
+    end
+
     attributes.each do |attr|
       define_method attr do
         val = @attributes[attr.to_s]
+        if val && options[:type] == :date
+          val = Date.strptime(val.to_s)
+        end
+
         if ! val && ! full? && respond_to?(:json_url) && @attributes['json_url']
           fetch_full
-          val = @attributes[attr.to_s]
+          val = send(attr)
         end
         val
       end

@@ -5,24 +5,26 @@ class FederalRegister::Article < FederalRegister::Base
                 :agencies,
                 :body_html_url,
                 :cfr_references,
-                :comments_close_on,
                 :dates,
                 :docket_id,
                 :document_number,
-                :effective_on,
                 :end_page,
                 :full_text_xml_url,
                 :html_url,
                 :json_url,
                 :mods_url,
                 :pdf_url,
-                :publication_date,
                 :regulation_id_numbers,
                 :start_page,
                 :title,
                 :type,
                 :volume
-  
+
+  add_attribute :comments_close_on,
+                :effective_on,
+                :publication_date,
+                :type => :date
+ 
   def self.search(args)
     FederalRegister::ResultSet.fetch("/articles.json", :query => args, :result_class => self)
   end
