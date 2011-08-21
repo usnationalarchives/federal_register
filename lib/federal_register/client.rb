@@ -4,7 +4,7 @@ class FederalRegister::Client
   class RecordNotFound < HTTParty::ResponseError; end
   class ServerError < HTTParty::ResponseError; end
   
-  base_uri 'http://www.federalregister.gov/api/v1'
+  base_uri 'http://api.federalregister.gov/v1'
   
   def self.get(url, *options)
     response = super
