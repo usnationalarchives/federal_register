@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe FederalRegister::Agency do
   describe ".all" do
     before(:each) do
-      FakeWeb.register_uri(:get, "http://www.federalregister.gov/api/v1/agencies.json", :body => [{},{}].to_json, :content_type =>"text/json")
+      FakeWeb.register_uri(:get, "http://api.federalregister.gov/v1/agencies.json", :body => [{},{}].to_json, :content_type =>"text/json")
     end
 
     it "returns Agency objects" do
@@ -21,7 +21,7 @@ describe FederalRegister::Agency do
 
   describe "attribute loading" do
     before(:each) do
-      @agency = FederalRegister::Agency.new({'name' => "Commerce Department", 'json_url' => "http://www.federalregister.gov/api/v1/agencies/1.json"})
+      @agency = FederalRegister::Agency.new({'name' => "Commerce Department", 'json_url' => "http://api.federalregister.gov/v1/agencies/1.json"})
     end
 
     describe "existing attribute" do
@@ -37,7 +37,7 @@ describe FederalRegister::Agency do
     end
 
     describe "missing attribute" do
-      FakeWeb.register_uri(:get, "http://www.federalregister.gov/api/v1/agencies/1.json", :body => {:description => "Lorem ipsum"}.to_json, :content_type =>"text/json")
+      FakeWeb.register_uri(:get, "http://api.federalregister.gov/v1/agencies/1.json", :body => {:description => "Lorem ipsum"}.to_json, :content_type =>"text/json")
       it "should lazy-load from the json_url" do
         @agency.send(:attributes)['description'].should be_nil
         @agency.description.should == "Lorem ipsum"
