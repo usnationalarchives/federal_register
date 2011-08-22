@@ -1,30 +1,30 @@
 class FederalRegister::Article < FederalRegister::Base
-  ATTRIBUTES = [
-    :title,
-    :type,
-    :abstract,
-    :document_number,
-    :html_url,
-    :pdf_url,
-    :publication_date,
-    :agencies,
-    :full_text_xml_url,
-    :abstract_html_url,
-    :body_html_url,
-    :mods_url,
-    :action,
-    :dates,
-    :effective_on,
-    :comments_close_on,
-    :start_page,
-    :end_page,
-    :volume,
-    :docket_id,
-    :regulation_id_numbers,
-    :cfr_references,
-    :json_url
-  ]
-  
+  add_attribute :abstract,
+                :abstract_html_url,
+                :action,
+                :agencies,
+                :body_html_url,
+                :cfr_references,
+                :dates,
+                :docket_id,
+                :document_number,
+                :end_page,
+                :full_text_xml_url,
+                :html_url,
+                :json_url,
+                :mods_url,
+                :pdf_url,
+                :regulation_id_numbers,
+                :start_page,
+                :title,
+                :type,
+                :volume
+
+  add_attribute :comments_close_on,
+                :effective_on,
+                :publication_date,
+                :type => :date
+ 
   def self.search(args)
     FederalRegister::ResultSet.fetch("/articles.json", :query => args, :result_class => self)
   end
@@ -46,7 +46,7 @@ class FederalRegister::Article < FederalRegister::Base
   
   %w(full_text_xml abstract_html body_html mods).each do |file_type|
     define_method file_type do
-      self.class.get(attributes["#{file_type}_url"]).body
+      self.class.get(send("#{file_type}_url")).body
     end
   end
 end

@@ -1,5 +1,29 @@
 class FederalRegister::Base < FederalRegister::Client
   attr_reader :attributes
+
+  def self.add_attribute(*attributes)
+    options = {}
+
+    if attributes.last.is_a?(Hash)
+      options = attributes.pop
+    end
+
+    attributes.each do |attr|
+      define_method attr do
+        val = @attributes[attr.to_s]
+        if val && options[:type] == :date
+          val = Date.strptime(val.to_s)
+        end
+
+        if ! val && ! full? && respond_to?(:json_url) && @attributes['json_url']
+          fetch_full
+          val = send(attr)
+        end
+        val
+      end
+    end
+  end
+
   def initialize(attributes = {}, options = {})
     @attributes = attributes
     @full = options[:full] || false
@@ -14,23 +38,14 @@ class FederalRegister::Base < FederalRegister::Client
     @full = true
     self
   end
-  
+
+  def self.override_base_uri(uri)
+    [FederalRegister::Agency, FederalRegister::Article, FederalRegister::Base, FederalRegister::Client, FederalRegister:: ResultSet].each do |klass|
+      klass.base_uri(uri)
+    end
+  end
+
   private
   
   attr_reader :attributes
-  
-  def method_missing(name, *args)
-    if attributes.has_key?(name.to_s)
-      attributes[name.to_s]
-    elsif self.class::ATTRIBUTES.include?(name.to_sym)
-      if ! full? && @attributes['json_url']
-        fetch_full
-        method_missing(name,*args)
-      else
-        nil
-      end
-    else
-      super
-    end
-  end
 end
