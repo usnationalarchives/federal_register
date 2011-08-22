@@ -53,12 +53,4 @@ describe FederalRegister::Article do
       FederalRegister::Article.search(:conditions => {:term => "Fish"}).should be_an_instance_of(FederalRegister::ResultSet)
     end
   end
-
-  describe "quality" do
-    context "ATTRIBUTES" do
-      it "contains no duplicates" do
-        FederalRegister::Article::ATTRIBUTES.uniq.should == FederalRegister::Article::ATTRIBUTES
-      end
-    end
-  end
 end

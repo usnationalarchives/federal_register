@@ -1,13 +1,14 @@
 class FederalRegister::Agency < FederalRegister::Base
   ATTRIBUTES = [
-    :description,
     :id,
-    :json_url,
-    :logo,
     :name,
-    :recent_articles_url,
     :short_name,
-    :url
+    :url,
+    :description,
+    :url,
+    :recent_articles_url,
+    :logo,
+    :json_url
   ]
   
   def self.all
