@@ -33,5 +33,9 @@ describe FederalRegister::Base do
         klass.default_options[:base_uri].should == 'http://fr2.local/api/v1'
       end
     end
+
+    after(:all) do
+      FederalRegister::Base.override_base_uri('http://api.federalregister.gov/v1')
+    end
   end
 end
