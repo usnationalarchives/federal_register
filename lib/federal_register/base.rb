@@ -11,7 +11,7 @@ class FederalRegister::Base < FederalRegister::Client
     attributes.each do |attr|
       define_method attr do
         val = @attributes[attr.to_s]
-        if val && options[:type] == :date
+        if val && options[:type] == :date && ! val.is_a?(Date)
           val = Date.strptime(val.to_s)
         end
 
