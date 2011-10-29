@@ -7,6 +7,7 @@ class FederalRegister::Article < FederalRegister::Base
                 :cfr_references,
                 :dates,
                 :docket_id,
+                :docket_ids,
                 :document_number,
                 :end_page,
                 :full_text_xml_url,

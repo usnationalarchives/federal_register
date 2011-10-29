@@ -74,4 +74,18 @@ describe FederalRegister::Article do
       article.publication_date.should == Date.strptime("2011-07-22") 
     end
   end
+
+  describe "#docket_ids" do
+    it "returns an array" do
+      document_number = "2010-213"
+      FakeWeb.register_uri(
+        :get,
+        "http://api.federalregister.gov/v1/articles/#{document_number}.json", 
+        :content_type =>"text/json",
+        :body => {:title => "Important Notice", :docket_ids => ['ABC','123']}.to_json
+      )
+
+      FederalRegister::Article.find(document_number).docket_ids.should == ['ABC','123']
+    end
+  end
 end
