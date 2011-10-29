@@ -63,6 +63,48 @@ describe FederalRegister::Base do
         end
       end
     end
+
+    context "when attribute is of type datetime" do
+      before(:each) do
+        @klass = Class.new(FederalRegister::Base)
+        @klass.add_attribute(:updated_at, :type => :datetime)
+      end
+
+      context "when value is nil" do
+        it "should return nil" do
+          instance = @klass.new('updated_at' => nil)
+          instance.updated_at.should be_nil
+        end
+      end
+
+      context "when value is a DateTime" do
+        it "returns a datetime" do
+          datetime = DateTime.current
+          instance = @klass.new('updated_at' => datetime)
+          instance.updated_at.should == datetime
+        end
+      end
+
+      context "when value is not a datetime" do
+        context "when value is a valid datetime string" do
+          it "returns the datetime" do
+            time_string = "2011-10-21T08:45:00-04:00" #"2011-09-29T08:45:00-04:00"
+            instance = @klass.new('updated_at' => time_string)
+            instance.updated_at.should == DateTime.parse(time_string)
+          end
+        end
+
+        context "when value is not a valid date string" do
+          it "throws" do
+            date_string = "foo"
+            instance = @klass.new(:updated_at => date_string)
+            lambda {
+              instance.updated_at.should == '?'
+            }.should raise_error
+          end
+        end
+      end
+    end
   end
 
   describe '.override_base_uri' do

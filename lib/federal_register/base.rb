@@ -11,8 +11,17 @@ class FederalRegister::Base < FederalRegister::Client
     attributes.each do |attr|
       define_method attr do
         val = @attributes[attr.to_s]
-        if val && options[:type] == :date && ! val.is_a?(Date)
-          val = Date.strptime(val.to_s)
+        if val
+          case options[:type]
+          when :date
+            if ! val.is_a?(Date)
+              val = Date.strptime(val.to_s)
+            end
+          when :datetime
+            if ! val.is_a?(DateTime)
+              val = DateTime.parse(val.to_s)
+            end
+          end
         end
 
         if ! val && ! full? && respond_to?(:json_url) && @attributes['json_url']
