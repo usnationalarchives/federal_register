@@ -54,7 +54,5 @@ class FederalRegister::Base < FederalRegister::Client
     end
   end
 
-  private
-  
   attr_reader :attributes
 end
