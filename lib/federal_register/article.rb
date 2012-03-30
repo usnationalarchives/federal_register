@@ -39,6 +39,7 @@ class FederalRegister::Article < FederalRegister::Base
   end
 
   def self.find_all(*document_numbers)
+    document_numbers = document_numbers.flatten
     document_numbers.each {|doc_num| validate_document_number!(doc_num)}
     result_set = FederalRegister::ResultSet.fetch("/articles/#{document_numbers.join(',')}.json", :result_class => self)
   end
