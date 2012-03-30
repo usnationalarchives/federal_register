@@ -17,6 +17,7 @@ class FederalRegister::Article < FederalRegister::Base
                 :pdf_url,
                 :regulation_id_numbers,
                 :start_page,
+                :subtype,
                 :title,
                 :type,
                 :volume
