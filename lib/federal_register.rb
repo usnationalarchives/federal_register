@@ -4,6 +4,7 @@ require 'httparty'
 module FederalRegister
 end
 
+require "federal_register/utilities.rb"
 require "federal_register/client.rb"
 require "federal_register/base.rb"
 require "federal_register/result_set.rb"
