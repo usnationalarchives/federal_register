@@ -47,12 +47,13 @@ class FederalRegister::Article < FederalRegister::Base
   
   def self.find(document_number, options={})
     validate_document_number!(document_number)
-    attributes = get("/articles/#{document_number}.json")
-    
-    fetch_options = {:full => true}
-    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
-
-    new(attributes, fetch_options)
+    if options[:fields].present?
+      attributes = get("/articles/#{document_number}.json", :query => {:fields => options[:fields]})
+      new(attributes)
+    else
+      attributes = get("/articles/#{document_number}.json")
+      new(attributes, :full => true)
+    end
   end
 
   def self.find_all(*args)
