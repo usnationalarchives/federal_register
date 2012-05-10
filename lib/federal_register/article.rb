@@ -25,6 +25,7 @@ class FederalRegister::Article < FederalRegister::Base
                 :json_url,
                 :mods_url,
                 :pdf_url,
+                :president,
                 :public_inspection_pdf_url,
                 :regulation_id_number_info,
                 :regulation_id_numbers,
