@@ -29,10 +29,14 @@ class FederalRegister::Article < FederalRegister::Base
                 :public_inspection_pdf_url,
                 :regulation_id_number_info,
                 :regulation_id_numbers,
+                :regulations_dot_gov_info,
                 :regulations_dot_gov_url,
                 :start_page,
                 :subtype,
+                :raw_text_url,
                 :title,
+                :toc_subject,
+                :toc_doc,
                 :type,
                 :volume
 
@@ -65,7 +69,7 @@ class FederalRegister::Article < FederalRegister::Base
     options, document_numbers = extract_options(args)
 
     fetch_options = {:result_class => self}
-    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+    fetch_op tions.merge!(:query => {:fields => options[:fields]}) if options[:fields]
 
     document_numbers = document_numbers.flatten
     document_numbers.each {|doc_num| validate_document_number!(doc_num)}
@@ -79,9 +83,15 @@ class FederalRegister::Article < FederalRegister::Base
     end
   end
   
-  %w(full_text_xml abstract_html body_html mods).each do |file_type|
+  %w(full_text_xml abstract_html body_html raw_text mods).each do |file_type|
     define_method file_type do
-      self.class.get(send("#{file_type}_url")).body
+      begin
+        self.class.get(send("#{file_type}_url")).body
+      rescue FederalRegister::Client::RecordNotFound
+        nil
+      rescue
+        raise send("#{file_type}_url").inspect
+       end
     end
   end
 

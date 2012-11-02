@@ -21,6 +21,10 @@ class FederalRegister::Base < FederalRegister::Client
             if ! val.is_a?(DateTime)
               val = DateTime.parse(val.to_s)
             end
+          when :integer
+            if ! val.is_a?(Fixnum)
+              val = val.to_i
+            end
           end
         end
 

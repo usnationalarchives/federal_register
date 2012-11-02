@@ -9,6 +9,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
                 :pdf_file_size,
                 :num_pages,
                 :title,
+                :toc_doc,
                 :toc_subject,
                 :type
 
