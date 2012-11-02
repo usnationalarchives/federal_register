@@ -69,7 +69,7 @@ class FederalRegister::Article < FederalRegister::Base
     options, document_numbers = extract_options(args)
 
     fetch_options = {:result_class => self}
-    fetch_op tions.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
 
     document_numbers = document_numbers.flatten
     document_numbers.each {|doc_num| validate_document_number!(doc_num)}
