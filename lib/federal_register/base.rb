@@ -24,10 +24,6 @@ class FederalRegister::Base < FederalRegister::Client
           end
         end
 
-        if ! val && ! full? && respond_to?(:json_url) && @attributes['json_url']
-          fetch_full
-          val = send(attr)
-        end
         val
       end
     end
