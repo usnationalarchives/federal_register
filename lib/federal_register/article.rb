@@ -45,6 +45,10 @@ class FederalRegister::Article < FederalRegister::Base
   def self.search(args)
     FederalRegister::ResultSet.fetch("/articles.json", :query => args, :result_class => self)
   end
+
+  def self.search_metadata(args)
+    FederalRegister::ResultSet.fetch("/articles.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
+  end
   
   def self.find(document_number, options={})
     validate_document_number!(document_number)

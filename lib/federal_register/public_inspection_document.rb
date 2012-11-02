@@ -22,6 +22,10 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
     FederalRegister::ResultSet.fetch("/public-inspection-documents.json", :query => args, :result_class => self)
   end
 
+  def self.search_metadata(args)
+    FederalRegister::ResultSet.fetch("/public-inspection-documents.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
+  end
+  
   def self.find(document_number)
     attributes = get("/public-inspection-documents/#{document_number}.json")
     new(attributes, :full => true)
