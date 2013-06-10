@@ -1,24 +1,26 @@
-= federal_register
+# federal_register
 
 Ruby API Client for FederalRegister.gov that handles searching articles and getting basic information about agencies.
 
 For more information about the FederalRegister.gov API, see http://www.federalregister.gov/learn/developers
 
-== Usage
+## Usage
 
-    FederalRegister::Article.find('2011-17721').title
-    result_set = FederalRegister::Article.search(:conditions => {:term => "Accessibility"})
-    # or result_set = FederalRegister.find_all('2011-17721','2011-17722')
-    result_set.count
-    result_set.results.each do |article|
-      puts "#{article.title} by #{article.agencies.map(&:name)}"
-    end
-    
-    FederalRegister::Agency.all.each do |agency|
-      puts agency.name
-    end
+```ruby
+FederalRegister::Article.find('2011-17721').title
+result_set = FederalRegister::Article.search(:conditions => {:term => "Accessibility"})
+# or result_set = FederalRegister.find_all('2011-17721','2011-17722')
+result_set.count
+result_set.results.each do |article|
+  puts "#{article.title} by #{article.agencies.map(&:name)}"
+end
 
-== Contributing to federal_register
+FederalRegister::Agency.all.each do |agency|
+  puts agency.name
+end
+```
+
+## Contributing to federal_register
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -28,8 +30,8 @@ For more information about the FederalRegister.gov API, see http://www.federalre
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
-Copyright (c) 2011 Critical Juncture. See LICENSE.txt for
+Copyright (c) 2013 Critical Juncture. See LICENSE.txt for
 further details.
 
