@@ -35,21 +35,5 @@ describe FederalRegister::Agency do
         lambda {@agency.non_existent_attribute}.should raise_error NoMethodError
       end
     end
-
-    describe "missing attribute" do
-      FakeWeb.register_uri(:get, "http://api.federalregister.gov/v1/agencies/1.json", :body => {:description => "Lorem ipsum"}.to_json, :content_type =>"text/json")
-      it "should lazy-load from the json_url" do
-        @agency.send(:attributes)['description'].should be_nil
-        @agency.description.should == "Lorem ipsum"
-        @agency.send(:attributes)['description'].should == "Lorem ipsum"
-      end
-    end
-
-    describe "missing attribute when no full json" do
-      it "should lazy-load from the json_url" do
-        @agency = FederalRegister::Agency.new({'name' => "Commerce Department"})
-        @agency.description.should be_nil
-      end
-    end
   end
 end
