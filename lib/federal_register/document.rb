@@ -48,11 +48,11 @@ class FederalRegister::Document < FederalRegister::Base
                 :type => :date
  
   def self.search(args)
-    FederalRegister::ResultSet.fetch("/documents.json", :query => args, :result_class => self)
+    FederalRegister::ResultSet.fetch("/articles.json", :query => args, :result_class => self)
   end
 
   def self.search_metadata(args)
-    FederalRegister::ResultSet.fetch("/documents.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
+    FederalRegister::ResultSet.fetch("/articles.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
   end
   
   def self.find(document_number, options={})
