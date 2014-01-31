@@ -4,13 +4,13 @@ describe FederalRegister::ResultSet do
   describe "#next" do
     it "loads the next_page_url" do
       FakeWeb.register_uri(:get, "http://api.federalregister.gov/v1/fishes?page=2", :body => {:count => 24}.to_json, :content_type =>"text/json")
-      FederalRegister::ResultSet.new({'next_page_url' => 'http://api.federalregister.gov/v1/fishes?page=2'}, FederalRegister::Article).next.count.should == 24
+      FederalRegister::ResultSet.new({'next_page_url' => 'http://api.federalregister.gov/v1/fishes?page=2'}, FederalRegister::Document).next.count.should == 24
     end
   end
 
   describe "enumerability" do
     it "responds to #each" do
-      FederalRegister::ResultSet.new({}, FederalRegister::Article).should respond_to(:each)
+      FederalRegister::ResultSet.new({}, FederalRegister::Document).should respond_to(:each)
     end
 
     it "includes Enumerable" do
@@ -19,7 +19,7 @@ describe FederalRegister::ResultSet do
 
     context "given an empty result set" do
       it "never invokes the block" do
-        results = FederalRegister::ResultSet.new({}, FederalRegister::Article)
+        results = FederalRegister::ResultSet.new({}, FederalRegister::Document)
         lambda {
           results.each {|i| fail i }
         }.should_not raise_error
@@ -32,7 +32,7 @@ describe FederalRegister::ResultSet do
                                                                  {'panda' => 'bamboo'},
                                                                  {'curry' => 'noodle'},
                                                                  {'soup' => 'tree'}
-                                                                ]}, FederalRegister::Article)
+                                                                ]}, FederalRegister::Document)
       end
 
       it "doesn't yields nil to a block" do
