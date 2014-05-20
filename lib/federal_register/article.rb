@@ -10,6 +10,7 @@ class FederalRegister::Article < FederalRegister::Base
                 :body_html_url,
                 :cfr_references,
                 :citation,
+                :comment_url,
                 :corrections,
                 :correction_of,
                 :dates,
