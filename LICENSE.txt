@@ -1,8 +1,12 @@
-This coode is is released under the Affero GPL v3, which requires that the source code be made available to any network user of the application. So while we encourage you to fork and run your own copies of this application, any changes you make need to be shared with their users. Note that this does not allow the use of the official logos or the icons.
+This coode is is released under the Affero GPL v3, which requires that the source code 
+be made available to any network user of the application. So while we encourage you to 
+fork and run your own copies of this application, any changes you make need to be shared 
+with their users. Note that this does not allow the use of the official logos or the icons.
 
-govpulse itself is copyrighted by David Augustine, Robert Burbach, and Andrew Carpenter.
+govpulse/CritialJuncture itself is copyrighted by David Augustine, Robert Burbach, and Andrew Carpenter.
 
-A variety of external software libraries are included with this software; they are all open source, and suitable for use where this application is.
+A variety of external software libraries are included with this software; they are all 
+open source, and suitable for use where this application is.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
