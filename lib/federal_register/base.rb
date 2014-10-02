@@ -48,8 +48,18 @@ class FederalRegister::Base < FederalRegister::Client
     self
   end
 
+  # this has to be done because HTTParty uses a custom attr_inheritable
+  # which copies the setting for base uri into each class at inheritance
+  # time - which is before we can modify it in something like a Rails
+  # initializer
   def self.override_base_uri(uri)
-    [FederalRegister::Agency, FederalRegister::Article, FederalRegister::Base, FederalRegister::Client, FederalRegister:: ResultSet].each do |klass|
+    [FederalRegister::Agency,
+     FederalRegister::Article,
+     FederalRegister::Base,
+     FederalRegister::Client,
+     FederalRegister::Document,
+     FederalRegister::PublicInspectionDocument,
+     FederalRegister::ResultSet].each do |klass|
       klass.base_uri(uri)
     end
   end
