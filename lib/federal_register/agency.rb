@@ -10,8 +10,11 @@ class FederalRegister::Agency < FederalRegister::Base
                 :parent_id,
                 :type => :integer
   
-  def self.all
-    response = get('/agencies.json')
+  def self.all(options={})
+    get_options = {}
+    get_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+
+    response = get('/agencies.json', get_options)
     if response.success?
       response.map do |hsh|
         new(hsh, :full => true)
