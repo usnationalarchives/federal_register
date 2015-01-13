@@ -37,11 +37,11 @@ class FederalRegister::Base < FederalRegister::Client
     @attributes = attributes
     @full = options[:full] || false
   end
-  
+
   def full?
     @full
   end
-  
+
   def fetch_full
     @attributes = self.class.get(json_url)
     @full = true

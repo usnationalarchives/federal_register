@@ -46,7 +46,7 @@ class FederalRegister::Document < FederalRegister::Base
                 :publication_date,
                 :signing_date,
                 :type => :date
- 
+
   def self.search(args)
     FederalRegister::ResultSet.fetch("/documents.json", :query => args, :result_class => self)
   end
@@ -54,7 +54,7 @@ class FederalRegister::Document < FederalRegister::Base
   def self.search_metadata(args)
     FederalRegister::ResultSet.fetch("/documents.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
   end
-  
+
   def self.find(document_number, options={})
     validate_document_number!(document_number)
     if options[:fields].present?
@@ -77,13 +77,13 @@ class FederalRegister::Document < FederalRegister::Base
 
     result_set = FederalRegister::ResultSet.fetch("/documents/#{document_numbers.join(',')}.json", fetch_options)
   end
-  
+
   def agencies
     attributes["agencies"].map do |attr|
       FederalRegister::Agency.new(attr)
     end
   end
-  
+
   %w(full_text_xml abstract_html body_html raw_text mods).each do |file_type|
     define_method file_type do
       begin

@@ -1,6 +1,6 @@
 class FederalRegister::Client
   include HTTParty
-  
+
   class ResponseError < HTTParty::ResponseError
     def message
       response.body
@@ -14,12 +14,12 @@ class FederalRegister::Client
   class RecordNotFound < ResponseError; end
   class BadRequest < ResponseError; end
   class ServerError < ResponseError; end
-  
+
   base_uri 'http://api.federalregister.gov/v1'
-  
+
   def self.get(url, *options)
     response = super
-    
+
     case response.code
     when 200
       response

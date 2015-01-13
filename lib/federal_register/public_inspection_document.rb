@@ -18,7 +18,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
   add_attribute :filed_at,
                 :pdf_update_at,
                 :type => :datetime
-  
+
   def self.search(args)
     FederalRegister::ResultSet.fetch("/public-inspection-documents.json", :query => args, :result_class => self)
   end
@@ -26,7 +26,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
   def self.search_metadata(args)
     FederalRegister::ResultSet.fetch("/public-inspection-documents.json", :query => args.merge(:metadata_only => '1'), :result_class => self)
   end
-  
+
   def self.find(document_number)
     attributes = get("/public-inspection-documents/#{document_number}.json")
     new(attributes, :full => true)
@@ -43,7 +43,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
   def self.find_all(*document_numbers)
     result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.join(',')}.json", :result_class => self)
   end
-  
+
   def agencies
     attributes["agencies"].map do |attr|
       FederalRegister::Agency.new(attr)
