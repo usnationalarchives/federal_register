@@ -33,11 +33,11 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
   end
 
   def self.available_on(date)
-    FederalRegister::ResultSet.fetch("/public-inspection-documents.json", :query => {:conditions => {:available_on => date}}, :result_class => self)
+    FederalRegister::PublicInspectionIssueResultSet.fetch("/public-inspection-documents.json", :query => {:conditions => {:available_on => date}}, :result_class => self)
   end
 
   def self.current
-    FederalRegister::ResultSet.fetch("/public-inspection-documents/current.json", :result_class => self)
+    FederalRegister::PublicInspectionIssueResultSet.fetch("/public-inspection-documents/current.json", :result_class => self)
   end
 
   def self.find_all(*document_numbers)
