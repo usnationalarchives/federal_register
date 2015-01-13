@@ -275,4 +275,12 @@ Style/WhileUntilModifier:
   Enabled: false
 
 Style/WordArray:
+  Description: 'Use %w or %W for arrays of words.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
+  Enabled: true
   MinSize: 23
+
+Style/BarePercentLiterals:
+  Description: 'Checks if usage of %() or %Q() matches configuration.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-q-shorthand'
+  Enabled: false
