@@ -80,7 +80,7 @@ describe FederalRegister::Document do
     before(:each) do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles.json?conditions[term]=Fish", 
+        "http://api.federalregister.gov/v1/documents.json?conditions[term]=Fish", 
         :content_type =>"text/json",
         :body => {:count => 3}.to_json
       )
@@ -94,21 +94,21 @@ describe FederalRegister::Document do
   describe "#full_text_xml" do
     it "fetches the full_text_xml from the full_text_xml_url" do
       url = "http://example.com/full_text"
-      article = FederalRegister::Document.new("full_text_xml_url" => url)
+      document = FederalRegister::Document.new("full_text_xml_url" => url)
       FakeWeb.register_uri(
         :get,
         url,
         :content_type =>"text/xml",
         :body => "hello, world!"
       )
-      article.full_text_xml.should == 'hello, world!'
+      document.full_text_xml.should == 'hello, world!'
     end
   end
 
   describe "#publication_date" do
     it "returns a Date object" do
-      article = FederalRegister::Document.new("publication_date" => "2011-07-22")
-      article.publication_date.should == Date.strptime("2011-07-22") 
+      document = FederalRegister::Document.new("publication_date" => "2011-07-22")
+      document.publication_date.should == Date.strptime("2011-07-22") 
     end
   end
 

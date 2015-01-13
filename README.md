@@ -1,18 +1,18 @@
 # federal_register
 
-Ruby API Client for FederalRegister.gov that handles searching articles and getting basic information about agencies.
+Ruby API Client for FederalRegister.gov that handles searching documents and getting basic information about agencies.
 
 For more information about the FederalRegister.gov API, see http://www.federalregister.gov/learn/developers
 
 ## Usage
 
 ```ruby
-FederalRegister::Article.find('2011-17721').title
-result_set = FederalRegister::Article.search(:conditions => {:term => "Accessibility"})
+FederalRegister::Document.find('2011-17721').title
+result_set = FederalRegister::Document.search(:conditions => {:term => "Accessibility"})
 # or result_set = FederalRegister.find_all('2011-17721','2011-17722')
 result_set.count
-result_set.results.each do |article|
-  puts "#{article.title} by #{article.agencies.map(&:name)}"
+result_set.results.each do |document|
+  puts "#{document.title} by #{document.agencies.map(&:name)}"
 end
 
 FederalRegister::Agency.all.each do |agency|
@@ -21,7 +21,7 @@ end
 ```
 
 ## Contributing to federal_register
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
