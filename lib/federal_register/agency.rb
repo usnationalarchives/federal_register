@@ -5,6 +5,7 @@ class FederalRegister::Agency < FederalRegister::Base
                 :name,
                 :recent_articles_url,
                 :short_name,
+                :slug,
                 :url
   add_attribute :id,
                 :parent_id,
