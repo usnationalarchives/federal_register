@@ -58,8 +58,14 @@ class FederalRegister::Base < FederalRegister::Client
      FederalRegister::Base,
      FederalRegister::Client,
      FederalRegister::Document,
+     FederalRegister::Facet,
+     FederalRegister::Facet::Agency,
+     FederalRegister::Facet::Topic,
      FederalRegister::PublicInspectionDocument,
-     FederalRegister::ResultSet].each do |klass|
+     FederalRegister::ResultSet,
+     FederalRegister::PublicInspectionIssueResultSet,
+     FederalRegister::FacetResultSet,
+    ].each do |klass|
       klass.base_uri(uri)
     end
   end
