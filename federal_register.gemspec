@@ -4,25 +4,25 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{federal_register}
-  s.version = "0.5.0"
+  s.name = "federal_register"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew Carpenter"]
-  s.date = %q{2012-03-30}
-  s.description = %q{Ruby API Client for FederalRegister.gov that handles searching articles and getting information about agencies}
-  s.email = %q{andrew@criticaljuncture.org}
+  s.date = "2015-02-06"
+  s.description = "Ruby API Client for FederalRegister.gov that handles searching articles and getting information about agencies"
+  s.email = "andrew@criticaljuncture.org"
   s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.rdoc"
+    "LICENSE.md",
+    "README.md"
   ]
   s.files = [
     ".document",
     ".watchr",
     "Gemfile",
     "Gemfile.lock",
-    "LICENSE.txt",
-    "README.rdoc",
+    "LICENSE.md",
+    "README.md",
     "Rakefile",
     "VERSION",
     "federal_register.gemspec",
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     "lib/federal_register/client.rb",
     "lib/federal_register/public_inspection_document.rb",
     "lib/federal_register/result_set.rb",
+    "lib/federal_register/utilities.rb",
     "spec/agency_spec.rb",
     "spec/article_spec.rb",
     "spec/base_spec.rb",
@@ -40,11 +41,11 @@ Gem::Specification.new do |s|
     "spec/result_set_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/criticaljuncture/federal_register}
+  s.homepage = "http://github.com/criticaljuncture/federal_register"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.7.2}
-  s.summary = %q{Ruby API Client for FederalRegister.gov}
+  s.rubygems_version = "1.8.11"
+  s.summary = "Ruby API Client for FederalRegister.gov"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
