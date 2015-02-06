@@ -6,7 +6,7 @@ describe FederalRegister::PublicInspectionDocument do
       document_number = "2010-213"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/public-inspection-documents/#{document_number}.json", 
+        "https://www.federalregister.gov/api/v1/public-inspection-documents/#{document_number}.json", 
         :content_type =>"text/json",
         :body => {:title => "Important Notice"}.to_json
       )
@@ -18,7 +18,7 @@ describe FederalRegister::PublicInspectionDocument do
       document_number = "some-random-document"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/public-inspection-documents/#{document_number}.json", 
+        "https://www.federalregister.gov/api/v1/public-inspection-documents/#{document_number}.json", 
         :content_type =>"text/json",
         :status => 404
       )
@@ -30,7 +30,7 @@ describe FederalRegister::PublicInspectionDocument do
     it "fetches multiple matching documents" do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/public-inspection-documents/abc,def.json", 
+        "https://www.federalregister.gov/api/v1/public-inspection-documents/abc,def.json", 
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
       )
@@ -43,7 +43,7 @@ describe FederalRegister::PublicInspectionDocument do
     it "fetches the document on PI on a given date" do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/public-inspection-documents.json?conditions[available_on]=2011-10-15", 
+        "https://www.federalregister.gov/api/v1/public-inspection-documents.json?conditions[available_on]=2011-10-15", 
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
       )
@@ -56,7 +56,7 @@ describe FederalRegister::PublicInspectionDocument do
     it "fetches the PI documents from the current issue" do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/public-inspection-documents/current.json", 
+        "https://www.federalregister.gov/api/v1/public-inspection-documents/current.json", 
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
       )

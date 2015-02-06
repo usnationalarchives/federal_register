@@ -6,7 +6,7 @@ describe FederalRegister::Article do
       document_number = "2010-213"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/#{document_number}.json", 
+        "https://www.federalregister.gov/api/v1/articles/#{document_number}.json", 
         :content_type =>"text/json",
         :body => {:title => "Important Notice"}.to_json
       )
@@ -18,7 +18,7 @@ describe FederalRegister::Article do
       document_number = "2010-213"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/#{document_number}.json?fields[]=title&fields[]=start_page",
+        "https://www.federalregister.gov/api/v1/articles/#{document_number}.json?fields[]=title&fields[]=start_page",
         :content_type => "text/json",
         :body => {:title => "Important Notice", :start_page => 12345}.to_json
       )
@@ -33,7 +33,7 @@ describe FederalRegister::Article do
       document_number = "some-random-document"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/#{document_number}.json", 
+        "https://www.federalregister.gov/api/v1/articles/#{document_number}.json", 
         :content_type =>"text/json",
         :status => 404
       )
@@ -49,7 +49,7 @@ describe FederalRegister::Article do
     it "fetches multiple matching documents" do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/abc,def.json", 
+        "https://www.federalregister.gov/api/v1/articles/abc,def.json", 
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
       )
@@ -60,7 +60,7 @@ describe FederalRegister::Article do
     it "fetches multiple matching documents with only requested fields (when present)" do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/abc,def.json?fields[]=document_number&fields[]=title", 
+        "https://www.federalregister.gov/api/v1/articles/abc,def.json?fields[]=document_number&fields[]=title", 
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc", :title => "Important Notice"}, 
                                {:document_number => "def", :title => "Important Rule"}]}.to_json
@@ -80,7 +80,7 @@ describe FederalRegister::Article do
     before(:each) do
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles.json?conditions[term]=Fish", 
+        "https://www.federalregister.gov/api/v1/articles.json?conditions[term]=Fish", 
         :content_type =>"text/json",
         :body => {:count => 3}.to_json
       )
@@ -117,7 +117,7 @@ describe FederalRegister::Article do
       document_number = "2010-213"
       FakeWeb.register_uri(
         :get,
-        "http://api.federalregister.gov/v1/articles/#{document_number}.json", 
+        "https://www.federalregister.gov/api/v1/articles/#{document_number}.json", 
         :content_type =>"text/json",
         :body => {:title => "Important Notice", :docket_ids => ['ABC','123']}.to_json
       )
