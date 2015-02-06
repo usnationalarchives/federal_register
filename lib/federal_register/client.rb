@@ -15,7 +15,7 @@ class FederalRegister::Client
   class BadRequest < ResponseError; end
   class ServerError < ResponseError; end
   
-  base_uri 'http://api.federalregister.gov/v1'
+  base_uri 'https://www.federalregister.gov/api/v1'
   
   def self.get(url, *options)
     response = super
