@@ -60,6 +60,7 @@ class FederalRegister::Base < FederalRegister::Client
      FederalRegister::Document,
      FederalRegister::Facet,
      FederalRegister::Facet::Agency,
+     FederalRegister::Facet::PresidentialDocumentType,
      FederalRegister::Facet::Topic,
      FederalRegister::PublicInspectionDocument,
      FederalRegister::ResultSet,
