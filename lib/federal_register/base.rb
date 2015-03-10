@@ -53,19 +53,26 @@ class FederalRegister::Base < FederalRegister::Client
   # time - which is before we can modify it in something like a Rails
   # initializer
   def self.override_base_uri(uri)
-    [FederalRegister::Agency,
-     FederalRegister::Article,
-     FederalRegister::Base,
-     FederalRegister::Client,
-     FederalRegister::Document,
-     FederalRegister::Facet,
-     FederalRegister::Facet::Agency,
-     FederalRegister::Facet::PresidentialDocumentType,
-     FederalRegister::Facet::Topic,
-     FederalRegister::PublicInspectionDocument,
-     FederalRegister::ResultSet,
-     FederalRegister::PublicInspectionIssueResultSet,
-     FederalRegister::FacetResultSet,
+    [
+      FederalRegister::Agency,
+      FederalRegister::Article,
+      FederalRegister::Base,
+      FederalRegister::Client,
+      FederalRegister::Document,
+
+      FederalRegister::Facet,
+      FederalRegister::Facet::Agency,
+      FederalRegister::Facet::PresidentialDocumentType,
+      FederalRegister::Facet::Topic,
+      FederalRegister::Facet::Document::Type,
+      FederalRegister::Facet::Document::Type,
+      FederalRegister::Facet::PublicInspectionDocument,
+      FederalRegister::Facet::PublicInspectionDocument::Type,
+
+      FederalRegister::PublicInspectionDocument,
+      FederalRegister::ResultSet,
+      FederalRegister::PublicInspectionIssueResultSet,
+      FederalRegister::FacetResultSet,
     ].each do |klass|
       klass.base_uri(uri)
     end
