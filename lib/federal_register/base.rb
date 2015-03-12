@@ -64,7 +64,13 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::Agency,
       FederalRegister::Facet::PresidentialDocumentType,
       FederalRegister::Facet::Topic,
-      FederalRegister::Facet::Document::Type,
+
+      FederalRegister::Facet::Document::Daily,
+      FederalRegister::Facet::Document::Weekly,
+      FederalRegister::Facet::Document::Monthly,
+      FederalRegister::Facet::Document::Quarterly,
+      FederalRegister::Facet::Document::Yearly,
+
       FederalRegister::Facet::Document::Type,
       FederalRegister::Facet::PublicInspectionDocument,
       FederalRegister::Facet::PublicInspectionDocument::Type,

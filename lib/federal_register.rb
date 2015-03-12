@@ -19,6 +19,14 @@ require "federal_register/facet/agency.rb"
 require "federal_register/facet/presidential_document_type.rb"
 require "federal_register/facet/topic.rb"
 require "federal_register/facet/document.rb"
+
+require "federal_register/facet/document/daily.rb"
+require "federal_register/facet/document/weekly.rb"
+require "federal_register/facet/document/monthly.rb"
+require "federal_register/facet/document/quarterly.rb"
+require "federal_register/facet/document/yearly.rb"
+
 require "federal_register/facet/document/type.rb"
+
 require "federal_register/facet/public_inspection_document.rb"
 require "federal_register/facet/public_inspection_document/type.rb"

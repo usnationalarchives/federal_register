@@ -1,7 +1,7 @@
 class FederalRegister::FacetResultSet < FederalRegister::Client
   include Enumerable
 
-  attr_reader :conditions
+  attr_reader :conditions, :results
 
   def initialize(attributes, result_class, options={})
     @result_class = result_class
