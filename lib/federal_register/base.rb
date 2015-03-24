@@ -75,7 +75,10 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::PublicInspectionDocument,
       FederalRegister::Facet::PublicInspectionDocument::Type,
 
+      FederalRegister::HighlightedDocument,
       FederalRegister::PublicInspectionDocument,
+      FederalRegister::Section,
+
       FederalRegister::ResultSet,
       FederalRegister::PublicInspectionIssueResultSet,
       FederalRegister::FacetResultSet,
