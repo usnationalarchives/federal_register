@@ -16,12 +16,9 @@ class FederalRegister::Agency < FederalRegister::Base
     get_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
 
     response = get('/agencies.json', get_options)
-    if response.success?
-      response.map do |hsh|
-        new(hsh, :full => true)
-      end
-    else
-      raise response.inspect
+
+    response.map do |hsh|
+      new(hsh, :full => true)
     end
   end
 
