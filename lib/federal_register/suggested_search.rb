@@ -3,6 +3,7 @@ class FederalRegister::SuggestedSearch < FederalRegister::Base
                 :documents_in_last_year,
                 :position,
                 :search_conditions,
+                :section,
                 :slug,
                 :title
 
@@ -15,5 +16,10 @@ class FederalRegister::SuggestedSearch < FederalRegister::Base
     end
 
     responses
+  end
+
+  def self.find(slug)
+    response = get("/suggested_searches/#{slug}")
+    new(response)
   end
 end
