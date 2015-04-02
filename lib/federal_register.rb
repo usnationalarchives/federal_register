@@ -34,6 +34,12 @@ require "federal_register/facet/document/type.rb"
 require "federal_register/facet/public_inspection_document.rb"
 require "federal_register/facet/public_inspection_document/type.rb"
 
+require "federal_register/facet/public_inspection_issue.rb"
+require "federal_register/facet/public_inspection_issue/daily.rb"
+require "federal_register/facet/public_inspection_issue/daily_filing.rb"
+require "federal_register/facet/public_inspection_issue/type.rb"
+require "federal_register/facet/public_inspection_issue/type_filing.rb"
+
 require "federal_register/highlighted_document.rb"
 require "federal_register/public_inspection_document.rb"
 require "federal_register/section.rb"

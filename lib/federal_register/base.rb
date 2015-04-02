@@ -72,8 +72,15 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::Document::Yearly,
 
       FederalRegister::Facet::Document::Type,
+
       FederalRegister::Facet::PublicInspectionDocument,
       FederalRegister::Facet::PublicInspectionDocument::Type,
+
+      FederalRegister::Facet::PublicInspectionIssue,
+      FederalRegister::Facet::PublicInspectionIssue::Daily,
+      FederalRegister::Facet::PublicInspectionIssue::DailyFiling,
+      FederalRegister::Facet::PublicInspectionIssue::Type,
+      FederalRegister::Facet::PublicInspectionIssue::TypeFiling,
 
       FederalRegister::HighlightedDocument,
       FederalRegister::PublicInspectionDocument,
