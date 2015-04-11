@@ -56,7 +56,6 @@ class FederalRegister::Document < FederalRegister::Base
   end
 
   def self.find(document_number, options={})
-    validate_document_number!(document_number)
     if options[:fields].present?
       attributes = get("/documents/#{document_number}.json", :query => {:fields => options[:fields]})
       new(attributes)
@@ -73,7 +72,6 @@ class FederalRegister::Document < FederalRegister::Base
     fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
 
     document_numbers = document_numbers.flatten
-    document_numbers.each {|doc_num| validate_document_number!(doc_num)}
 
     result_set = FederalRegister::ResultSet.fetch("/documents/#{document_numbers.join(',')}.json", fetch_options)
   end
@@ -93,14 +91,6 @@ class FederalRegister::Document < FederalRegister::Base
       rescue
         raise send("#{file_type}_url").inspect
        end
-    end
-  end
-
-  private
-
-  def self.validate_document_number!(document_number)
-    if document_number.blank? || document_number !~ /^[a-zA-Z0-9-]+$/
-      raise InvalidDocumentNumber.new("'#{document_number}' is not a valid FR Document Number")
     end
   end
 end
