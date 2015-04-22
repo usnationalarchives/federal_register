@@ -1,6 +1,7 @@
 class FederalRegister::SuggestedSearch < FederalRegister::Base
   add_attribute :description,
                 :documents_in_last_year,
+                :documents_with_open_comment_periods,
                 :position,
                 :search_conditions,
                 :section,
