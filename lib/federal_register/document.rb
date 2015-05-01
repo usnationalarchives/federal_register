@@ -32,6 +32,7 @@ class FederalRegister::Document < FederalRegister::Base
                 :regulation_id_numbers,
                 :regulations_dot_gov_info,
                 :regulations_dot_gov_url,
+                :significant,
                 :start_page,
                 :subtype,
                 :raw_text_url,
