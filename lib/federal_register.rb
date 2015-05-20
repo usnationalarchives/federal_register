@@ -15,6 +15,7 @@ require "federal_register/facet_result_set.rb"
 require "federal_register/agency.rb"
 require "federal_register/document.rb"
 require "federal_register/article.rb"
+require "federal_register/document_images.rb"
 
 
 require "federal_register/facet.rb"

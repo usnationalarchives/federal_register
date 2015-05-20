@@ -23,6 +23,7 @@ class FederalRegister::Document < FederalRegister::Base
                 :executive_order_number,
                 :full_text_xml_url,
                 :html_url,
+                :images,
                 :json_url,
                 :mods_url,
                 :pdf_url,
@@ -93,5 +94,9 @@ class FederalRegister::Document < FederalRegister::Base
         raise send("#{file_type}_url").inspect
        end
     end
+  end
+
+  def images
+    FederalRegister::DocumentImages.new(attributes["images"])
   end
 end
