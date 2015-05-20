@@ -97,6 +97,10 @@ class FederalRegister::Document < FederalRegister::Base
   end
 
   def images
-    FederalRegister::DocumentImages.new(attributes["images"])
+    if attributes["images"]
+      FederalRegister::DocumentImages.new(attributes["images"])
+    else
+      nil
+    end
   end
 end
