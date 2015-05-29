@@ -1,14 +1,15 @@
 class FederalRegister::Section < FederalRegister::Base
-  add_attribute :name,
-                :slug
-
+  add_attribute :name
 
   def self.search(args={})
     response = get('/sections', query: args)
 
-    response.map do |attributes|
-      new(attributes)
+    responses = {}
+    response.map do |section, attributes|
+      responses[section] = new(attributes)
     end
+
+    responses
   end
 
   def highlighted_documents
