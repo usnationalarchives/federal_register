@@ -66,7 +66,7 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::PresidentialDocumentType,
       FederalRegister::Facet::Topic,
 
-      FederalRegister::Facet::Document::Date,
+      FederalRegister::Facet::Document::Frequency,
       FederalRegister::Facet::Document::Daily,
       FederalRegister::Facet::Document::Weekly,
       FederalRegister::Facet::Document::Monthly,

@@ -1,4 +1,4 @@
-class FederalRegister::Facet::Document::Date < FederalRegister::Facet::Document
+class FederalRegister::Facet::Document::Frequency < FederalRegister::Facet::Document
   def self.chart_url(args={})
     uri = [base_uri, url, '.png']
 
