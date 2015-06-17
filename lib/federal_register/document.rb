@@ -1,6 +1,5 @@
 class FederalRegister::Document < FederalRegister::Base
   extend FederalRegister::Utilities
-  class InvalidDocumentNumber < ArgumentError; end
 
   add_attribute :abstract,
                 :abstract_html_url,

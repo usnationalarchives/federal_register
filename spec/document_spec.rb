@@ -39,10 +39,6 @@ describe FederalRegister::Document do
       )
       lambda{ FederalRegister::Document.find(document_number) }.should raise_error FederalRegister::Client::RecordNotFound
     end
-
-    it "throws an error when given an invalid document number" do
-      lambda{ FederalRegister::Document.find('an! invalid! document! number!') }.should raise_error FederalRegister::Document::InvalidDocumentNumber
-    end
   end
 
   describe ".find_all" do
@@ -69,10 +65,6 @@ describe FederalRegister::Document do
       result_set.results.map(&:document_number).sort.should === ['abc','def']
       result_set.results.map(&:title).sort.should === ['Important Notice','Important Rule']
       result_set.results.map(&:start_page).should === [nil, nil]
-    end
-
-    it "throws an error when given an invalid document number" do
-      lambda{ FederalRegister::Document.find_all('123-456','an! invalid! document! number!') }.should raise_error FederalRegister::Document::InvalidDocumentNumber
     end
   end
 
