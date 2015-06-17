@@ -24,6 +24,7 @@ require "federal_register/facet/presidential_document_type.rb"
 require "federal_register/facet/topic.rb"
 require "federal_register/facet/document.rb"
 
+require "federal_register/facet/document/date.rb"
 require "federal_register/facet/document/daily.rb"
 require "federal_register/facet/document/weekly.rb"
 require "federal_register/facet/document/monthly.rb"

@@ -8,7 +8,9 @@ class FederalRegister::Facet < FederalRegister::Base
     :slug
 
   def self.search(args={})
-    FederalRegister::FacetResultSet.fetch(url, :query => args, :result_class => self)
+    FederalRegister::FacetResultSet.fetch(
+      url, :query => args, :result_class => self
+    )
   end
 
   def initialize(attributes={}, options={})

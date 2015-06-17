@@ -1,4 +1,4 @@
-class FederalRegister::Facet::Document::Monthly < FederalRegister::Facet::Document
+class FederalRegister::Facet::Document::Monthly < FederalRegister::Facet::Document::Date
   def self.url
     '/documents/facets/monthly'
   end
