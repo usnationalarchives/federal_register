@@ -22,6 +22,16 @@ class FederalRegister::Agency < FederalRegister::Base
     end
   end
 
+  def self.find(slug, options={})
+    if options[:fields].present?
+      attributes = get("/agencies/#{slug}.json", :query => {:fields => options[:fields]})
+      new(attributes)
+    else
+      attributes = get("/agencies/#{slug}.json")
+      new(attributes, :full => true)
+    end
+  end
+
   def logo_url(size)
     if attributes.has_key?("logo")
       attributes["logo"]["#{size}_url"] || raise("size '#{size}' not a valid image size")
