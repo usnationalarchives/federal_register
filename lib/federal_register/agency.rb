@@ -1,5 +1,6 @@
 class FederalRegister::Agency < FederalRegister::Base
-  add_attribute :child_ids,
+  add_attribute :agency_url,
+                :child_ids,
                 :description,
                 :json_url,
                 :logo,
