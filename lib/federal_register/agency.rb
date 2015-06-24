@@ -24,13 +24,27 @@ class FederalRegister::Agency < FederalRegister::Base
     end
   end
 
-  def self.find(slug, options={})
+  def self.find(id_or_slug, options={})
     if options[:fields].present?
-      attributes = get("/agencies/#{slug}.json", :query => {:fields => options[:fields]})
-      new(attributes)
+      response = get("/agencies/#{id_or_slug}.json", :query => {:fields => options[:fields]})
+
+      if response.is_a?(Hash)
+        new(response)
+      else
+        response.map do |hsh|
+          new(hsh)
+        end
+      end
     else
-      attributes = get("/agencies/#{slug}.json")
-      new(attributes, :full => true)
+      response = get("/agencies/#{id_or_slug}.json")
+
+      if response.is_a?(Hash)
+        new(response, :full => true)
+      else
+        response.map do |hsh|
+          new(hsh, :full => true)
+        end
+      end
     end
   end
 
