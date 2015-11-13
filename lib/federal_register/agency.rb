@@ -48,6 +48,14 @@ class FederalRegister::Agency < FederalRegister::Base
     end
   end
 
+  def self.suggestions(args={})
+    response = get("/agencies/suggestions", query: args)
+
+    response.map do |hsh|
+      new(hsh, :full => true)
+    end
+  end
+
   def logo_url(size)
     if attributes.has_key?("logo")
       attributes["logo"]["#{size}_url"] || raise("size '#{size}' not a valid image size")
