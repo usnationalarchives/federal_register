@@ -73,9 +73,13 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::Document::Quarterly,
       FederalRegister::Facet::Document::Yearly,
 
+      FederalRegister::Facet::Document::Agency,
+      FederalRegister::Facet::Document::Section,
+      FederalRegister::Facet::Document::Topic,
       FederalRegister::Facet::Document::Type,
 
       FederalRegister::Facet::PublicInspectionDocument,
+      FederalRegister::Facet::PublicInspectionDocument::Agency,
       FederalRegister::Facet::PublicInspectionDocument::Type,
 
       FederalRegister::Facet::PublicInspectionIssue,

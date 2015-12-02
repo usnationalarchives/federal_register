@@ -31,9 +31,13 @@ require "federal_register/facet/document/monthly.rb"
 require "federal_register/facet/document/quarterly.rb"
 require "federal_register/facet/document/yearly.rb"
 
+require "federal_register/facet/document/agency.rb"
+require "federal_register/facet/document/section.rb"
+require "federal_register/facet/document/topic.rb"
 require "federal_register/facet/document/type.rb"
 
 require "federal_register/facet/public_inspection_document.rb"
+require "federal_register/facet/public_inspection_document/agency.rb"
 require "federal_register/facet/public_inspection_document/type.rb"
 
 require "federal_register/facet/public_inspection_issue.rb"
