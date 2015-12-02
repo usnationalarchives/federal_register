@@ -3,6 +3,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
                 :docket_numbers,
                 :document_number,
                 :editorial_note,
+                :excerpts,
                 :html_url,
                 :filing_type,
                 :pdf_url,
