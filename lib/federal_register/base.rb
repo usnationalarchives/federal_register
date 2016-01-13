@@ -92,6 +92,7 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::PublicInspectionDocument,
       FederalRegister::Section,
       FederalRegister::SuggestedSearch,
+      FederalRegister::Topic,
 
       FederalRegister::ResultSet,
       FederalRegister::PublicInspectionIssueResultSet,
