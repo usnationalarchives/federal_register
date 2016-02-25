@@ -74,7 +74,13 @@ class FederalRegister::Document < FederalRegister::Base
 
     document_numbers = document_numbers.flatten
 
-    result_set = FederalRegister::ResultSet.fetch("/documents/#{document_numbers.join(',')}.json", fetch_options)
+    #TODO: fix this gross hack to ensure that find_all with a single document number
+    # is returned in the same way multiple document numbers are
+    if document_numbers.size == 1
+      document_numbers << " "
+    end
+
+    result_set = FederalRegister::ResultSet.fetch("/documents/#{document_numbers.join(',').strip}.json", fetch_options)
   end
 
   def agencies
