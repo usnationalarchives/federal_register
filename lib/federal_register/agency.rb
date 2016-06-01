@@ -5,6 +5,7 @@ class FederalRegister::Agency < FederalRegister::Base
                 :json_url,
                 :logo,
                 :name,
+                :raw_name,
                 :recent_articles_url,
                 :short_name,
                 :slug,
