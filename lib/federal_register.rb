@@ -37,6 +37,7 @@ require "federal_register/facet/document/topic.rb"
 require "federal_register/facet/document/type.rb"
 
 require "federal_register/facet/public_inspection_document.rb"
+require "federal_register/facet/public_inspection_document/agencies.rb"
 require "federal_register/facet/public_inspection_document/agency.rb"
 require "federal_register/facet/public_inspection_document/type.rb"
 

@@ -79,6 +79,7 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Facet::Document::Type,
 
       FederalRegister::Facet::PublicInspectionDocument,
+      FederalRegister::Facet::PublicInspectionDocument::Agencies,
       FederalRegister::Facet::PublicInspectionDocument::Agency,
       FederalRegister::Facet::PublicInspectionDocument::Type,
 
