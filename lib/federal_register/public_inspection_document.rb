@@ -1,4 +1,6 @@
 class FederalRegister::PublicInspectionDocument < FederalRegister::Base
+  extend FederalRegister::Utilities
+
   add_attribute :agencies,
                 :docket_numbers,
                 :document_number,
@@ -41,8 +43,19 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
     FederalRegister::PublicInspectionIssueResultSet.fetch("/public-inspection-documents/current.json", :result_class => self)
   end
 
-  def self.find_all(*document_numbers)
-    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.join(',')}.json", :result_class => self)
+  def self.find_all(*args)
+    options, document_numbers = extract_options(args)
+
+    fetch_options = {:result_class => self}
+    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+
+    #TODO: fix this gross hack to ensure that find_all with a single document number
+    # is returned in the same way multiple document numbers are
+    if document_numbers.size == 1
+      document_numbers << " "
+    end
+
+    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.join(',').strip}.json", fetch_options)
   end
 
   def agencies
