@@ -103,7 +103,9 @@ class FederalRegister::Document < FederalRegister::Base
 
   def images
     if attributes["images"]
-      FederalRegister::DocumentImages.new(attributes["images"])
+      attributes["images"].map do |attributes|
+        FederalRegister::DocumentImage.new(attributes)
+      end
     else
       nil
     end

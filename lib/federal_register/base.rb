@@ -59,7 +59,7 @@ class FederalRegister::Base < FederalRegister::Client
       FederalRegister::Base,
       FederalRegister::Client,
       FederalRegister::Document,
-      FederalRegister::DocumentImages,
+      FederalRegister::DocumentImage,
 
       FederalRegister::Facet,
       FederalRegister::Facet::Agency,
