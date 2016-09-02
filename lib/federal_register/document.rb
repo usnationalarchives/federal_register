@@ -107,7 +107,7 @@ class FederalRegister::Document < FederalRegister::Base
         FederalRegister::DocumentImage.new(attributes)
       end
     else
-      nil
+      []
     end
   end
 end
