@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/criticaljuncture/federal_register"
   gem.license = "MIT"
   gem.summary = %Q{Ruby API Client for FederalRegister.gov}
-  gem.description = %Q{Ruby API Client for FederalRegister.gov that handles searching articles and getting information about agencies}
+  gem.description = %Q{Ruby API Client for FederalRegister.gov that handles searching documents and getting information about agencies}
   gem.email = "andrew@criticaljuncture.org"
   gem.authors = ["Andrew Carpenter"]
   # dependencies defined in Gemfile
@@ -38,8 +38,8 @@ end
 
 task :default => :spec
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
+require 'rdoc/task'
+RDoc::Task.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'

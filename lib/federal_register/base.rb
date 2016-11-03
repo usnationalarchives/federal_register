@@ -37,19 +37,68 @@ class FederalRegister::Base < FederalRegister::Client
     @attributes = attributes
     @full = options[:full] || false
   end
-  
+
   def full?
     @full
   end
-  
+
   def fetch_full
     @attributes = self.class.get(json_url)
     @full = true
     self
   end
 
+  # this has to be done because HTTParty uses a custom attr_inheritable
+  # which copies the setting for base uri into each class at inheritance
+  # time - which is before we can modify it in something like a Rails
+  # initializer
   def self.override_base_uri(uri)
-    [FederalRegister::Agency, FederalRegister::Article, FederalRegister::Base, FederalRegister::Client, FederalRegister:: ResultSet].each do |klass|
+    [
+      FederalRegister::Agency,
+      FederalRegister::Article,
+      FederalRegister::Base,
+      FederalRegister::Client,
+      FederalRegister::Document,
+      FederalRegister::DocumentImage,
+
+      FederalRegister::Facet,
+      FederalRegister::Facet::Agency,
+      FederalRegister::Facet::PresidentialDocumentType,
+      FederalRegister::Facet::Topic,
+
+      FederalRegister::Facet::Document::Frequency,
+      FederalRegister::Facet::Document::Daily,
+      FederalRegister::Facet::Document::Weekly,
+      FederalRegister::Facet::Document::Monthly,
+      FederalRegister::Facet::Document::Quarterly,
+      FederalRegister::Facet::Document::Yearly,
+
+      FederalRegister::Facet::Document::Agency,
+      FederalRegister::Facet::Document::Section,
+      FederalRegister::Facet::Document::Topic,
+      FederalRegister::Facet::Document::Type,
+
+      FederalRegister::Facet::PublicInspectionDocument,
+      FederalRegister::Facet::PublicInspectionDocument::Agencies,
+      FederalRegister::Facet::PublicInspectionDocument::Agency,
+      FederalRegister::Facet::PublicInspectionDocument::Type,
+
+      FederalRegister::Facet::PublicInspectionIssue,
+      FederalRegister::Facet::PublicInspectionIssue::Daily,
+      FederalRegister::Facet::PublicInspectionIssue::DailyFiling,
+      FederalRegister::Facet::PublicInspectionIssue::Type,
+      FederalRegister::Facet::PublicInspectionIssue::TypeFiling,
+
+      FederalRegister::HighlightedDocument,
+      FederalRegister::PublicInspectionDocument,
+      FederalRegister::Section,
+      FederalRegister::SuggestedSearch,
+      FederalRegister::Topic,
+
+      FederalRegister::ResultSet,
+      FederalRegister::PublicInspectionIssueResultSet,
+      FederalRegister::FacetResultSet,
+    ].each do |klass|
       klass.base_uri(uri)
     end
   end

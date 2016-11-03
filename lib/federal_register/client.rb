@@ -1,6 +1,6 @@
 class FederalRegister::Client
   include HTTParty
-  
+
   class ResponseError < HTTParty::ResponseError
     def message
       response.body
@@ -16,10 +16,10 @@ class FederalRegister::Client
   class ServerError < ResponseError; end
   
   base_uri 'https://www.federalregister.gov/api/v1'
-  
+
   def self.get(url, *options)
     response = super
-    
+
     case response.code
     when 200
       response

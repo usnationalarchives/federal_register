@@ -2,7 +2,7 @@ class FederalRegister::ResultSet < FederalRegister::Client
   include Enumerable
 
   attr_reader :count, :total_pages, :results, :errors, :description
-  
+
   def initialize(attributes, result_class)
     @result_class = result_class
     @count = attributes['count']
@@ -10,20 +10,20 @@ class FederalRegister::ResultSet < FederalRegister::Client
     @results = (attributes['results'] || []).map{|result| @result_class.new(result) }
 
     @description = attributes['description']
-    
+
     @prev_url = attributes['previous_page_url']
     @next_url = attributes['next_page_url']
     @errors   = attributes['errors']
   end
-  
+
   def next
     self.class.fetch(@next_url, :result_class => @result_class) if @next_url
   end
-  
+
   def previous
     self.class.fetch(@prev_url, :result_class => @result_class) if @prev_url
   end
-  
+
   def self.fetch(url, options = {})
     result_class = options.delete(:result_class)
     response = get(url, options)
