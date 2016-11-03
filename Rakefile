@@ -15,12 +15,12 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "federal_register"
-  gem.homepage = "http://github.com/criticaljuncture/federal_register"
+  gem.homepage = "http://github.com/usnationalarchives/federal_register"
   gem.license = "MIT"
   gem.summary = %Q{Ruby API Client for FederalRegister.gov}
   gem.description = %Q{Ruby API Client for FederalRegister.gov that handles searching documents and getting information about agencies}
   gem.email = "andrew@criticaljuncture.org"
-  gem.authors = ["Andrew Carpenter"]
+  gem.authors = ["Andrew Carpenter", "Bob Burbach"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
