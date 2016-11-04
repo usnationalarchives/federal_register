@@ -20,9 +20,9 @@ describe FederalRegister::ResultSet do
     context "given an empty result set" do
       it "never invokes the block" do
         results = FederalRegister::ResultSet.new({}, FederalRegister::Document)
-        lambda {
+        lambda do
           results.each {|i| fail i }
-        }.should_not raise_error
+        end.should_not raise_error
       end
     end
 

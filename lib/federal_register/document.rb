@@ -70,7 +70,7 @@ class FederalRegister::Document < FederalRegister::Base
     options, document_numbers = extract_options(args)
 
     fetch_options = {:result_class => self}
-    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+    fetch_options[:query] = {:fields => options[:fields]} if options[:fields]
 
     document_numbers = document_numbers.flatten
 
@@ -93,9 +93,9 @@ class FederalRegister::Document < FederalRegister::Base
     define_method file_type do
       begin
         self.class.get(send("#{file_type}_url")).body
-      rescue FederalRegister::Client::RecordNotFound
+       rescue FederalRegister::Client::RecordNotFound
         nil
-      rescue
+       rescue
         raise send("#{file_type}_url").inspect
        end
     end

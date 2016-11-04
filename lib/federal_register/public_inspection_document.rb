@@ -47,7 +47,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
     options, document_numbers = extract_options(args)
 
     fetch_options = {:result_class => self}
-    fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
+    fetch_options[:query] = {:fields => options[:fields]} if options[:fields]
 
     #TODO: fix this gross hack to ensure that find_all with a single document number
     # is returned in the same way multiple document numbers are
