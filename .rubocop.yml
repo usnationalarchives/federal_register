@@ -211,7 +211,7 @@ Style/SignalException:
 Style/SingleLineBlockParams:
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 Style/SpaceAfterComma:
@@ -262,7 +262,7 @@ Style/SymbolProc:
 Style/TrailingBlankLines:
   Enabled: false
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
   Enabled: false
 
 Style/TrailingWhitespace:

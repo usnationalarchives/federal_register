@@ -43,9 +43,9 @@ describe FederalRegister::Base do
           it "throws" do
             date_string = "PANDA"
             instance = @klass.new('panda' => date_string)
-            lambda {
+            lambda do
               instance.panda.should == "never going to get here"
-            }.should raise_error
+            end.should raise_error
           end
         end
       end
@@ -85,9 +85,9 @@ describe FederalRegister::Base do
           it "throws" do
             date_string = "foo"
             instance = @klass.new(:updated_at => date_string)
-            lambda {
+            lambda do
               instance.updated_at.should == '?'
-            }.should raise_error
+            end.should raise_error
           end
         end
       end

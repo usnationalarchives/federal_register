@@ -14,7 +14,7 @@ class FederalRegister::HighlightedDocument < FederalRegister::Base
     'medium',
     'navigation',
     'small'
-  ]
+  ].freeze
 
   def photo_url(size)
     unless VALID_PHOTO_SIZES.include?(size)

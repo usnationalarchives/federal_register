@@ -22,7 +22,7 @@ class FederalRegister::Base < FederalRegister::Client
               val = DateTime.parse(val.to_s)
             end
           when :integer
-            if ! val.is_a?(Fixnum)
+            if ! val.is_a?(Integer)
               val = val.to_i
             end
           end
