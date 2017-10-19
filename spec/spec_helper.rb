@@ -4,6 +4,7 @@ require 'rspec'
 require 'fakeweb'
 require 'active_support/ordered_hash'
 require 'active_support/json'
+require 'active_support/time'
 require 'federal_register'
 
 FakeWeb.allow_net_connect = false
