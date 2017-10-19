@@ -20,7 +20,7 @@ class FederalRegister::SuggestedSearch < FederalRegister::Base
   end
 
   def self.find(slug)
-    response = get("/suggested_searches/#{slug}")
+    response = get("/suggested_searches/#{URI.encode(slug.to_s)}")
     new(response)
   end
 end

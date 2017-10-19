@@ -26,8 +26,10 @@ class FederalRegister::Agency < FederalRegister::Base
   end
 
   def self.find(id_or_slug, options={})
+    slug = URI.encode(id_or_slug.to_s)
+
     if options[:fields].present?
-      response = get("/agencies/#{id_or_slug}.json", :query => {:fields => options[:fields]})
+      response = get("/agencies/#{slug}.json", :query => {:fields => options[:fields]})
 
       if response.is_a?(Hash)
         new(response)
@@ -37,7 +39,7 @@ class FederalRegister::Agency < FederalRegister::Base
         end
       end
     else
-      response = get("/agencies/#{id_or_slug}.json")
+      response = get("/agencies/#{slug}.json")
 
       if response.is_a?(Hash)
         new(response, :full => true)
