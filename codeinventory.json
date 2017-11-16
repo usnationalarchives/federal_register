@@ -1,0 +1,16 @@
+﻿{
+  "name": "Federal Register 2.0 Web Display",
+  "description": "Ruby tools for tracking Federal Register content, leveraging the FederalRegister.gov API.",
+  "license": null,
+  "openSourceProject": 1,
+  "governmentWideReuseProject": 1,
+  "tags": [
+    "NARA",
+    "API",
+    "FederalRegister",
+    "Ruby"
+  ],
+  "contact": {
+    "email": "leslie.johnston@nara.gov"
+  }
+}
