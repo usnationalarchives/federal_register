@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "federal_register"
-  s.version = "0.6.2"
+  s.version = "0.6.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew Carpenter", "Bob Burbach"]
-  s.date = "2017-11-15"
+  s.date = "2017-11-16"
   s.description = "Ruby API Client for FederalRegister.gov that handles searching documents and getting information about agencies"
   s.email = "andrew@criticaljuncture.org"
   s.extra_rdoc_files = [
