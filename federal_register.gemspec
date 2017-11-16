@@ -85,9 +85,9 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httparty>, [">= 0.7.0"])
+
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.6"])
       s.add_development_dependency(%q<activesupport>, ["~> 3"])
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3.0"])
@@ -96,7 +96,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<httparty>, [">= 0.7.0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.6"])
       s.add_dependency(%q<activesupport>, ["~> 3"])
       s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
@@ -106,7 +105,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<httparty>, [">= 0.7.0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.6"])
     s.add_dependency(%q<activesupport>, ["~> 3"])
     s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
