@@ -94,7 +94,7 @@ class FederalRegister::Document < FederalRegister::Base
   %w(full_text_xml abstract_html body_html raw_text mods).each do |file_type|
     define_method file_type do
       begin
-        self.class.get(send("#{file_type}_url")).body
+        self.class.get_raw(send("#{file_type}_url")).body
       rescue FederalRegister::Client::RecordNotFound
         nil
       rescue
