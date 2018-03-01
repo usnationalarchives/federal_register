@@ -31,7 +31,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
   end
 
   def self.find(document_number)
-    attributes = get("/public-inspection-documents/#{document_number}.json")
+    attributes = get("/public-inspection-documents/#{document_number}.json").parsed_response
     new(attributes, :full => true)
   end
 

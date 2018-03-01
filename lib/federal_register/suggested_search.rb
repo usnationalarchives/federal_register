@@ -9,7 +9,7 @@ class FederalRegister::SuggestedSearch < FederalRegister::Base
                 :title
 
   def self.search(args={})
-    response = get('/suggested_searches', query: args)
+    response = get('/suggested_searches', query: args).parsed_response
 
     responses = {}
     response.map do |section, searches|
@@ -20,7 +20,7 @@ class FederalRegister::SuggestedSearch < FederalRegister::Base
   end
 
   def self.find(slug)
-    response = get("/suggested_searches/#{URI.encode(slug.to_s)}")
+    response = get("/suggested_searches/#{URI.encode(slug.to_s)}").parsed_response
     new(response)
   end
 end

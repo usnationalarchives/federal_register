@@ -2,7 +2,7 @@ class FederalRegister::Section < FederalRegister::Base
   add_attribute :name
 
   def self.search(args={})
-    response = get('/sections', query: args)
+    response = get('/sections', query: args).parsed_response
 
     responses = {}
     response.map do |section, attributes|

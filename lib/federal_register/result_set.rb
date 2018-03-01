@@ -26,7 +26,7 @@ class FederalRegister::ResultSet < FederalRegister::Client
 
   def self.fetch(url, options = {})
     result_class = options.delete(:result_class)
-    response = get(url, options)
+    response = get(url, options).parsed_response
     new(response, result_class)
   end
 

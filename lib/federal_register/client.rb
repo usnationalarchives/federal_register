@@ -17,7 +17,7 @@ class FederalRegister::Client
 
   base_uri 'https://www.federalregister.gov/api/v1'
 
-  def self.get_raw(url, *options)
+  def self.get(url, *options)
     response = super
 
     case response.code
@@ -32,9 +32,5 @@ class FederalRegister::Client
     else
       raise HTTParty::ResponseError.new(response)
     end
-  end
-
-  def self.get(url, *options)
-    get_raw(url, *options).parsed_response
   end
 end

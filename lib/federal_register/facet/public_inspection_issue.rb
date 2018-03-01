@@ -26,7 +26,7 @@ class FederalRegister::Facet::PublicInspectionIssue < FederalRegister::Base
   end
 
   def self.search(args={})
-    response = get(url, query: args)
+    response = get(url, query: args).parsed_response
 
     response.map do |slug, attributes|
       attributes['slug'] = slug

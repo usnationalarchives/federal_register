@@ -43,7 +43,7 @@ class FederalRegister::Base < FederalRegister::Client
   end
 
   def fetch_full
-    @attributes = self.class.get(json_url)
+    @attributes = self.class.get(json_url).fetch_full
     @full = true
     self
   end

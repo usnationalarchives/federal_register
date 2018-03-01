@@ -58,10 +58,10 @@ class FederalRegister::Document < FederalRegister::Base
 
   def self.find(document_number, options={})
     if options[:fields].present?
-      attributes = get("/documents/#{document_number}.json", :query => {:fields => options[:fields]})
+      attributes = get("/documents/#{document_number}.json", :query => {:fields => options[:fields]}).parsed_response
       new(attributes)
     else
-      attributes = get("/documents/#{document_number}.json")
+      attributes = get("/documents/#{document_number}.json").parsed_response
       new(attributes, :full => true)
     end
   end
@@ -94,7 +94,7 @@ class FederalRegister::Document < FederalRegister::Base
   %w(full_text_xml abstract_html body_html raw_text mods).each do |file_type|
     define_method file_type do
       begin
-        self.class.get_raw(send("#{file_type}_url")).body
+        self.class.get(send("#{file_type}_url")).body
       rescue FederalRegister::Client::RecordNotFound
         nil
       rescue

@@ -18,7 +18,7 @@ class FederalRegister::Agency < FederalRegister::Base
     get_options = {}
     get_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
 
-    response = get('/agencies.json', get_options)
+    response = get('/agencies.json', get_options).parsed_response
 
     response.map do |hsh|
       new(hsh, :full => true)
@@ -29,7 +29,7 @@ class FederalRegister::Agency < FederalRegister::Base
     slug = URI.encode(id_or_slug.to_s)
 
     if options[:fields].present?
-      response = get("/agencies/#{slug}.json", :query => {:fields => options[:fields]})
+      response = get("/agencies/#{slug}.json", :query => {:fields => options[:fields]}).parsed_response
 
       if response.is_a?(Hash)
         new(response)
@@ -39,7 +39,7 @@ class FederalRegister::Agency < FederalRegister::Base
         end
       end
     else
-      response = get("/agencies/#{slug}.json")
+      response = get("/agencies/#{slug}.json").parsed_response
 
       if response.is_a?(Hash)
         new(response, :full => true)
@@ -52,7 +52,7 @@ class FederalRegister::Agency < FederalRegister::Base
   end
 
   def self.suggestions(args={})
-    response = get("/agencies/suggestions", query: args)
+    response = get("/agencies/suggestions", query: args).parsed_response
 
     response.map do |hsh|
       new(hsh, :full => true)
