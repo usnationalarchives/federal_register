@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    federal_register (0.6.2)
-      httparty (>= 0.7.0)
+    federal_register (0.6.4)
+      httparty (>= 0.14.0)
 
 GEM
   remote: https://rubygems.org/
