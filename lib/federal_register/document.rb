@@ -26,6 +26,7 @@ class FederalRegister::Document < FederalRegister::Base
                 :images,
                 :json_url,
                 :mods_url,
+                :page_views,
                 :pdf_url,
                 :president,
                 :proclamation_number,
@@ -112,6 +113,21 @@ class FederalRegister::Document < FederalRegister::Base
       end
     else
       []
+    end
+  end
+
+  def page_views
+    if attributes["page_views"]
+      last_updated = begin
+        DateTime.parse(attributes["page_views"]["last_updated"])
+      rescue
+        nil
+      end
+
+      {
+        count: attributes["page_views"]["count"],
+        last_updated: last_updated
+      }
     end
   end
 end
