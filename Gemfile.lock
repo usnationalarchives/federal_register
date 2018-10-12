@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    federal_register (0.6.5)
+    federal_register (0.6.7)
       httparty (~> 0.14.0)
 
 GEM
