@@ -15,7 +15,7 @@ class FederalRegister::Facet::PublicInspectionIssue::TypeFiling < FederalRegiste
       @count = attributes['count']
       @name = attributes['name']
       @search_conditions = search_conditions.deep_merge({
-        conditions: {type: type}
+        conditions: {type: Array(type)}
       })
     end
   end
