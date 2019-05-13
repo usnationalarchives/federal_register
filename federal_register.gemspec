@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "federal_register"
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew Carpenter", "Bob Burbach"]
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/federal_register/client.rb",
     "lib/federal_register/document.rb",
     "lib/federal_register/document_image.rb",
+    "lib/federal_register/document_search_details.rb",
     "lib/federal_register/facet.rb",
     "lib/federal_register/facet/agency.rb",
     "lib/federal_register/facet/document.rb",
@@ -61,6 +62,7 @@ Gem::Specification.new do |s|
     "lib/federal_register/facet_result_set.rb",
     "lib/federal_register/highlighted_document.rb",
     "lib/federal_register/public_inspection_document.rb",
+    "lib/federal_register/public_inspection_document_search_details.rb",
     "lib/federal_register/public_inspection_issue_result_set.rb",
     "lib/federal_register/result_set.rb",
     "lib/federal_register/section.rb",
