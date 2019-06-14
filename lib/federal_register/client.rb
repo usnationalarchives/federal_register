@@ -11,11 +11,11 @@ class FederalRegister::Client
     end
   end
 
-  class RecordNotFound < ResponseError; end
   class BadRequest < ResponseError; end
+  class GatewayTimeout < ResponseError; end
+  class RecordNotFound < ResponseError; end
   class ServerError < ResponseError; end
   class ServiceUnavailable < ResponseError; end
-  class GatewayTimeout < ResponseError; end
 
   base_uri 'https://www.federalregister.gov/api/v1'
 
