@@ -14,6 +14,8 @@ class FederalRegister::Client
   class RecordNotFound < ResponseError; end
   class BadRequest < ResponseError; end
   class ServerError < ResponseError; end
+  class ServiceUnavailable < ResponseError; end
+  class GatewayTimeout < ResponseError; end
 
   base_uri 'https://www.federalregister.gov/api/v1'
 
@@ -29,6 +31,10 @@ class FederalRegister::Client
       raise RecordNotFound.new(response)
     when 500
       raise ServerError.new(response)
+    when 503
+      raise ServiceUnavailable.new(response)
+    when 504
+      raise GatewayTimeout.new(response)
     else
       raise HTTParty::ResponseError.new(response)
     end
