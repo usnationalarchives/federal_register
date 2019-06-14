@@ -45,7 +45,7 @@ describe FederalRegister::Base do
             instance = @klass.new('panda' => date_string)
             lambda {
               instance.panda.should == "never going to get here"
-            }.should raise_error
+            }.should raise_error ArgumentError
           end
         end
       end
@@ -84,10 +84,11 @@ describe FederalRegister::Base do
         context "when value is not a valid date string" do
           it "throws" do
             date_string = "foo"
-            instance = @klass.new(:updated_at => date_string)
+            instance = @klass.new('updated_at' => date_string)
+
             lambda {
               instance.updated_at.should == '?'
-            }.should raise_error
+            }.should raise_error ArgumentError
           end
         end
       end
