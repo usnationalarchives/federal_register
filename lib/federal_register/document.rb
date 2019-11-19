@@ -60,13 +60,21 @@ class FederalRegister::Document < FederalRegister::Base
   end
 
   def self.find(document_number, options={})
-    if options[:fields].present?
-      attributes = get("/documents/#{document_number}.json", :query => {:fields => options[:fields]}).parsed_response
-      new(attributes)
-    else
-      attributes = get("/documents/#{document_number}.json").parsed_response
-      new(attributes, :full => true)
+    query = {}
+    
+    if options[:publication_date].present?
+      publication_date = options[:publication_date]
+      publication_date = publication_date.is_a?(Date) ? publication_date.to_s(:iso) : publication_date
+      
+      query.merge!(:publication_date => publication_date)
     end
+
+    if options[:fields].present?
+      query.merge!(:fields => options[:fields])
+    end
+
+    attributes = get("/documents/#{document_number}.json", :query => query).parsed_response
+    new(attributes, :full => true)
   end
 
   # supports values like: '2016-26522', '2016-26522,2016-26594', '81 FR 76496', '81 FR 76496,81 FR 76685'

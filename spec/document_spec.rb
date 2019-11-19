@@ -29,6 +29,21 @@ describe FederalRegister::Document do
       result.end_page.should be(nil)
     end
 
+    it "fetches the document with the provided publication date (when present)" do
+      document_number = "2010-213"
+      publication_date = "2010-02-02"
+      FakeWeb.register_uri(
+        :get,
+        "https://www.federalregister.gov/api/v1/documents/#{document_number}.json?publication_date=#{publication_date}",
+        :content_type => "text/json",
+        :body => {:title => "Important Notice", :publication_date => publication_date}.to_json
+      )
+
+      result = FederalRegister::Document.find(document_number, :publication_date => publication_date)
+      result.title.should eql("Important Notice")
+      result.publication_date.should eql(Date.parse(publication_date))
+    end
+
     it "throws an error when a document doesn't exist" do
       document_number = "some-random-document"
       FakeWeb.register_uri(
