@@ -55,7 +55,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
       document_numbers << " "
     end
 
-    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.join(',').strip}.json", fetch_options)
+    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.compact.join(',').strip}.json", fetch_options)
   end
 
   def agencies

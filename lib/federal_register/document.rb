@@ -93,7 +93,7 @@ class FederalRegister::Document < FederalRegister::Base
       document_numbers_or_citations << " "
     end
 
-    result_set = FederalRegister::ResultSet.fetch("/documents/#{URI.encode(document_numbers_or_citations.join(',').strip)}.json", fetch_options)
+    result_set = FederalRegister::ResultSet.fetch("/documents/#{URI.encode(document_numbers_or_citations.compact.join(',').strip)}.json", fetch_options)
   end
 
   def agencies
