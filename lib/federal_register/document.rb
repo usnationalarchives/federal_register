@@ -81,11 +81,10 @@ class FederalRegister::Document < FederalRegister::Base
   # note: no space after comma
   def self.find_all(*args)
     options, document_numbers_or_citations = extract_options(args)
+    document_numbers_or_citations.flatten!
 
     fetch_options = {:result_class => self}
     fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
-
-    document_numbers_or_citations = document_numbers_or_citations.flatten
 
     #TODO: fix this gross hack to ensure that find_all with a single document number
     # is returned in the same way multiple document numbers are
@@ -93,7 +92,8 @@ class FederalRegister::Document < FederalRegister::Base
       document_numbers_or_citations << " "
     end
 
-    result_set = FederalRegister::ResultSet.fetch("/documents/#{URI.encode(document_numbers_or_citations.compact.join(',').strip)}.json", fetch_options)
+    params = URI.encode(document_numbers.compact.join(',').strip)
+    result_set = FederalRegister::ResultSet.fetch("/documents/#{params}.json", fetch_options)
   end
 
   def agencies

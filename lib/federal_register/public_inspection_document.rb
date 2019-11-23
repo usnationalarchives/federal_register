@@ -45,6 +45,7 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
 
   def self.find_all(*args)
     options, document_numbers = extract_options(args)
+    document_numbers.flatten!
 
     fetch_options = {:result_class => self}
     fetch_options.merge!(:query => {:fields => options[:fields]}) if options[:fields]
@@ -54,8 +55,9 @@ class FederalRegister::PublicInspectionDocument < FederalRegister::Base
     if document_numbers.size == 1
       document_numbers << " "
     end
-
-    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{document_numbers.compact.join(',').strip}.json", fetch_options)
+    
+    params = URI.encode(document_numbers.compact.join(',').strip)
+    result_set = FederalRegister::ResultSet.fetch("/public-inspection-documents/#{params}.json", fetch_options)
   end
 
   def agencies
