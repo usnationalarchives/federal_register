@@ -92,7 +92,7 @@ class FederalRegister::Document < FederalRegister::Base
       document_numbers_or_citations << " "
     end
 
-    params = URI.encode(document_numbers.compact.join(',').strip)
+    params = URI.encode(document_numbers_or_citations.compact.join(',').strip)
     result_set = FederalRegister::ResultSet.fetch("/documents/#{params}.json", fetch_options)
   end
 
