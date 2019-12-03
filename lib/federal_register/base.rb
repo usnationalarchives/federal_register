@@ -1,6 +1,8 @@
 class FederalRegister::Base < FederalRegister::Client
   attr_reader :attributes
 
+  INTEGER_CLASS = 1.class
+
   def self.add_attribute(*attributes)
     options = {}
 
@@ -22,7 +24,7 @@ class FederalRegister::Base < FederalRegister::Client
               val = DateTime.parse(val.to_s)
             end
           when :integer
-            if ! val.is_a?(Fixnum)
+            if ! val.is_a?(INTEGER_CLASS)
               val = val.to_i
             end
           end
