@@ -12,6 +12,7 @@ require "federal_register/result_set.rb"
 require "federal_register/public_inspection_issue_result_set.rb"
 require "federal_register/facet_result_set.rb"
 
+require "federal_register/document_utilities.rb"
 require "federal_register/agency.rb"
 require "federal_register/document.rb"
 require "federal_register/article.rb"
