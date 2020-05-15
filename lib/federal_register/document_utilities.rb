@@ -10,6 +10,10 @@ module FederalRegister::DocumentUtilities
 
     document_numbers_or_citations.uniq!
 
+    if document_numbers_or_citations.empty?
+      raise "No documents or citation numbers were provided"
+    end
+
     #TODO: fix this gross hack to ensure that find_all with a single document number
     # is returned in the same way multiple document numbers are
     if document_numbers_or_citations.size == 1
