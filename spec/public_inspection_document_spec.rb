@@ -41,9 +41,10 @@ describe FederalRegister::PublicInspectionDocument do
 
   describe ".available_on" do
     it "fetches the document on PI on a given date" do
+      params = URI.encode_www_form([["conditions[available_on]", "2011-10-15"]])
       FakeWeb.register_uri(
         :get,
-        "https://www.federalregister.gov/api/v1/public-inspection-documents.json?conditions[available_on]=2011-10-15",
+        "https://www.federalregister.gov/api/v1/public-inspection-documents.json?#{params}",
         :content_type =>"text/json",
         :body => {:results => [{:document_number => "abc"}, {:document_number => "def"}]}.to_json
       )
