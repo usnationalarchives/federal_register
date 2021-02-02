@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.2 
+
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rspec-test
+
+workflows:
+  test:
+    jobs:
+      - test

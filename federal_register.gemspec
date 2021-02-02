@@ -95,6 +95,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<activesupport>, ["~> 3"])
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3.0"])
       s.add_development_dependency(%q<rubocop>, [">= 0"])
+      s.add_development_dependency(%q<rspec_junit_formatter>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, [">= 0.7.0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
@@ -103,6 +104,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<activesupport>, ["~> 3"])
       s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
       s.add_dependency(%q<rubocop>, [">= 0"])
+      s.add_dependency(%q<rspec_junit_formatter>, [">= 0"])
     end
   else
     s.add_dependency(%q<httparty>, [">= 0.14.0"])
@@ -112,5 +114,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activesupport>, ["~> 3"])
     s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
     s.add_dependency(%q<rubocop>, [">= 0"])
+    s.add_dependency(%q<rspec_junit_formatter>, [">= 0"])
   end
 end
