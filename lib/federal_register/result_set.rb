@@ -1,11 +1,12 @@
 class FederalRegister::ResultSet < FederalRegister::Client
   include Enumerable
 
-  attr_reader :count, :total_pages, :results, :errors, :description
+  attr_reader :count, :total_pages, :results, :errors, :description, :is_neural
 
   def initialize(attributes, result_class)
     @result_class = result_class
     @count = attributes['count']
+    @is_neural = attributes['is_neural']
     @total_pages = attributes['total_pages']
     @results = (attributes['results'] || []).map{|result| @result_class.new(result) }
 
